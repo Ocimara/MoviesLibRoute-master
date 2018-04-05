@@ -344,6 +344,10 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="onn-7d-voH">
+                                <rect key="frame" x="158" y="242" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -357,6 +361,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="G72-Ho-tgq"/>
                     </view>
+                    <connections>
+                        <outlet property="loading" destination="onn-7d-voH" id="kcV-4g-b2y"/>
+                        <outlet property="webView" destination="iPN-lV-0mk" id="0oU-31-ZDf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="el6-Oz-XQb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

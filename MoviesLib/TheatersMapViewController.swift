@@ -234,7 +234,7 @@ extension TheatersMapViewController: MKMapViewDelegate {
             }
         }
             
-        }
+    }
         
     
     
