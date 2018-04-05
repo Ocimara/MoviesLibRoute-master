@@ -13,6 +13,7 @@ class WebViewController: UIViewController {
    
     @IBOutlet weak var webView: UIWebView!
 
+   
     @IBOutlet weak var loading: UIActivityIndicatorView!
     
     var url: String!
@@ -34,7 +35,11 @@ class WebViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    @IBAction func close(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    
     /*
     // MARK: - Navigation
 
@@ -45,6 +50,11 @@ class WebViewController: UIViewController {
     }
     */
 
+    @IBAction func runJS(_ sender: UIBarButtonItem) {
+        webView.stringByEvaluatingJavaScript(from: "alert('Rodando Java Script na webView')")
+    
+    }
+
 }
 
 
@@ -54,5 +64,15 @@ extension WebViewController: UIWebViewDelegate {
         loading.stopAnimating()
     }
     
-    
+    func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
+        
+        //não carrega
+        //if request.url!.absoluteString.range(of: "itau") != nil {return false}
+        if request.url!.absoluteString.range(of: "itau") != nil {
+            webView.stringByEvaluatingJavaScript(from: "alert('Não carregarei para teste')")
+            dismiss(animated: true, completion: nil)
+            return false
+        }
+        return true
+    }
 }
