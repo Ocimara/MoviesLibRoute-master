@@ -74,7 +74,7 @@ class TheatersMapViewController: UIViewController {
         for theater in theaters {
             let coordinate = CLLocationCoordinate2D(latitude: theater.latitude, longitude: theater.longitude)
             
-            let annotation = TheaterAnnotation(coordinate: coordinate, title: theater.name, subtitle: theater.address)
+            let annotation = TheaterAnnotation(coordinate: coordinate, title: theater.name, subtitle: theater.url)
             
             mapView.addAnnotation(annotation)
         }
@@ -197,7 +197,9 @@ extension TheatersMapViewController: MKMapViewDelegate {
                 
                 
             } else {
+                
                 annotationView.annotation = annotation
+                
             }
             
         } else if annotation is MKPointAnnotation {
@@ -225,9 +227,16 @@ extension TheatersMapViewController: MKMapViewDelegate {
             
         } else {
             //Tocamos no botão direito
+            if let vc = storyboard?.instantiateViewController(withIdentifier: "WebViewController") as? WebViewController {
+            vc.url = view.annotation!.subtitle!
+                present(vc, animated: true, completion: nil)
+                
+            }
+        }
+            
         }
         
-    }
+    
     
 }
 
